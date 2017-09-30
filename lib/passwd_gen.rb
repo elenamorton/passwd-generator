@@ -1,5 +1,6 @@
 module Generator
     UPPER_CHARS = ('A'..'Z').to_a
+    LOWER_CHARS = ('a'..'z').to_a
     
     def generate_password(length, uppercase=true, lowercase=true, number=true, special=true)
         @password = []
@@ -7,6 +8,8 @@ module Generator
         raise "Invalid characters input: Please, include at least one chars type" unless uppercase || lowercase || number || special
 
         @password = random_generator(UPPER_CHARS) if uppercase
+        @password.concat(random_generator(LOWER_CHARS)) if lowercase
+        
         return @password.shuffle.join[0...length]
     end
 
