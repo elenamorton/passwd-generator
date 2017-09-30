@@ -43,6 +43,14 @@ RSpec.describe Generator do
             expect(numbers).not_to match( a_string_matching(/[A-Z]{10}/) )
             expect(numbers).not_to match( a_string_matching(/[a-z]{10}/) )
         end
+
+        it 'expects to include only special chars' do
+            numbers = generator.generate_password(10, no_uppercase, no_lowercase, no_number, special)
+            expect(numbers).to match( a_string_matching(/[!\$%&\*@\^]{7}/) )
+            expect(numbers).not_to match( a_string_matching(/[A-Z]{10}/) )
+            expect(numbers).not_to match( a_string_matching(/[a-z]{10}/) )
+            expect(numbers).not_to match( a_string_matching(/[0-9]{10}/) )
+        end        
         
     end
     
