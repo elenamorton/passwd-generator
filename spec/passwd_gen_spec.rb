@@ -86,6 +86,15 @@ RSpec.describe Generator do
             expect(passwd_A_s).not_to match( a_string_matching(/[0-9]+/) )
         end
         
+        it 'expects to include uppercase, numbers and special chars' do
+            passwd_A0_s = generator.generate_password(10, uppercase, no_lowercase, number, special)
+            expect(passwd_A0_s.length).to eq 10
+            expect(passwd_A0_s).to match( a_string_matching(re_special_chars) )
+            expect(passwd_A0_s).to match( a_string_matching(/[A-Z]+/) )
+            expect(passwd_A0_s).to match( a_string_matching(/[0-9]+/) )
+            expect(passwd_A0_s).not_to match( a_string_matching(/[a-z]+/) )
+        end
+        
     end
     
 end
