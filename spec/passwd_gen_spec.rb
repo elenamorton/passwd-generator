@@ -23,7 +23,7 @@ RSpec.describe Generator do
     end
     
     context 'given a valid set of input' do
-        it 'expects to include uppercase letters' do
+        it 'expects to include only uppercase letters' do
             expect(generator.generate_password(10, uppercase, no_lowercase, no_number, no_special)).to match( a_string_matching(/[A-Z]{10}/) )
             expect(generator.generate_password(10, uppercase, no_lowercase, no_number, no_special)).not_to match( a_string_matching(/[a-z]{10}/) )
             expect(generator.generate_password(10, uppercase, no_lowercase, no_number, no_special)).not_to match( a_string_matching(/[0-9]{10}/) )
