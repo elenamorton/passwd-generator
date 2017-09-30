@@ -30,6 +30,12 @@ RSpec.describe Generator do
             expect(upper).not_to match( a_string_matching(/[0-9]{10}/) )
         end
 
+        it 'expects to include only lowcase letters' do
+            lower = generator.generate_password(10, no_uppercase, lowercase, no_number, no_special)
+            expect(lower).to match( a_string_matching(/[a-z]{10}/) )
+            expect(lower).not_to match( a_string_matching(/[A-Z]{10}/) )
+            expect(lower).not_to match( a_string_matching(/[0-9]{10}/) )
+        end
         
     end
     
