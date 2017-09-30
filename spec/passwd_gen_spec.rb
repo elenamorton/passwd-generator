@@ -5,7 +5,7 @@ RSpec.describe Generator do
     
     context 'given an invalid set of input arguments' do
         it 'expects to raise an error if length less or equal to 0 ' do
-            expect { generator.generatePassword(0) }.to raise_error "Invalid 'length' argument: it must be higher than 0"
+            expect { generator.generate_password(0) }.to raise_error "Invalid 'length' argument: it must be higher than 0"
         end
     
     end
