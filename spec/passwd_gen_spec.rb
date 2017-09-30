@@ -9,7 +9,7 @@ RSpec.describe Generator do
         end
         
         it 'expects to raise an error if no characters types are included' do
-            expect { generator.generate_password(1, false, false, false, false) }.to raise_error "Invalid characters input: Please, include at least one chars type."
+            expect { generator.generate_password(1, false, false, false, false) }.to raise_error "Invalid characters input: Please, include at least one chars type"
         end
     
     end
