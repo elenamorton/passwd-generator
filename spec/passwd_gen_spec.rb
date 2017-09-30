@@ -10,6 +10,7 @@ RSpec.describe Generator do
     let(:no_lowercase) { false }
     let(:no_number) { false }
     let(:no_special) { false }
+    let(:re_special_chars) { /[!\$%&\*@\^]/ }
     
     context 'given an invalid set of input arguments' do
         it 'expects to raise an error if length less or equal to 0' do
@@ -28,6 +29,7 @@ RSpec.describe Generator do
             expect(upper).to match( a_string_matching(/[A-Z]{10}/) )
             expect(upper).not_to match( a_string_matching(/[a-z]{10}/) )
             expect(upper).not_to match( a_string_matching(/[0-9]{10}/) )
+            expect(upper).not_to match( a_string_matching(re_special_chars) )
         end
 
         it 'expects to include only lowercase letters' do
@@ -35,6 +37,7 @@ RSpec.describe Generator do
             expect(lower).to match( a_string_matching(/[a-z]{10}/) )
             expect(lower).not_to match( a_string_matching(/[A-Z]{10}/) )
             expect(lower).not_to match( a_string_matching(/[0-9]{10}/) )
+            expect(lower).not_to match( a_string_matching(re_special_chars) )
         end
 
         it 'expects to include only 0-9 numbers' do
@@ -42,14 +45,15 @@ RSpec.describe Generator do
             expect(numbers).to match( a_string_matching(/[0-9]{10}/) )
             expect(numbers).not_to match( a_string_matching(/[A-Z]{10}/) )
             expect(numbers).not_to match( a_string_matching(/[a-z]{10}/) )
+            expect(numbers).not_to match( a_string_matching(re_special_chars) )
         end
 
         it 'expects to include only special chars' do
-            numbers = generator.generate_password(10, no_uppercase, no_lowercase, no_number, special)
-            expect(numbers).to match( a_string_matching(/[!\$%&\*@\^]{7}/) )
-            expect(numbers).not_to match( a_string_matching(/[A-Z]{10}/) )
-            expect(numbers).not_to match( a_string_matching(/[a-z]{10}/) )
-            expect(numbers).not_to match( a_string_matching(/[0-9]{10}/) )
+            specials = generator.generate_password(10, no_uppercase, no_lowercase, no_number, special)
+            expect(specials).to match( a_string_matching(re_special_chars) )
+            expect(specials).not_to match( a_string_matching(/[A-Z]{10}/) )
+            expect(specials).not_to match( a_string_matching(/[a-z]{10}/) )
+            expect(specials).not_to match( a_string_matching(/[0-9]{10}/) )
         end        
         
     end
