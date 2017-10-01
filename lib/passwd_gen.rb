@@ -3,6 +3,7 @@ module Generator
     LOWER_CHARS = ('a'..'z').to_a
     NUMBER = ('0'..'9').to_a
     SPECIAL = %w[! $ % & * @ ^]
+    MAX_LENGTH = 255
     
     def generate_password(length, uppercase=true, lowercase=true, number=true, special=true)
         @password = []
