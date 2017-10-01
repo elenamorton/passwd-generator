@@ -110,4 +110,16 @@ RSpec.describe Generator do
         
     end
     
+    context 'extra checks to ensure' do
+        it 'generated password length is no less than required' do
+            numbers = generator.generate_password(15, no_uppercase, no_lowercase, number, no_special)
+            expect(numbers.length).to eq 15
+            expect(numbers).to match( a_string_matching(/[0-9]+/) )
+            expect(numbers).not_to match( a_string_matching(/[A-Z]+/) )
+            expect(numbers).not_to match( a_string_matching(/[a-z]+/) )
+            expect(numbers).not_to match( a_string_matching(re_special_chars) )
+        end
+    
+    end
+    
 end
