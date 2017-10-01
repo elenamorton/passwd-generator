@@ -20,6 +20,10 @@ RSpec.describe Generator do
         it 'expects to raise an error if no characters types are included' do
             expect { generator.generate_password(1, no_uppercase, no_lowercase, no_number, no_special) }.to raise_error "Invalid characters input: Please, include at least one chars type"
         end
+        
+        it 'expects to raise an error if length is more tha maximum allowed' do
+            expect { generator.generate_password(256, uppercase, lowercase, number, special) }.to raise_error "Invalid 'length' argument: it must be lower than #{Generator::MAX_LENGTH}"
+        end
     
     end
     
