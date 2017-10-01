@@ -23,16 +23,20 @@ module Generator
     SPECIAL = %w[! $ % & * @ ^]
     
     def get_password(args)
-        @password = []
-        @password = random_generator(UPPER_CHARS) if args[:uppercase]
-        @password.concat(random_generator(LOWER_CHARS)) if args[:lowercase]
-        @password.concat(random_generator(NUMBER)) if args[:number]
-        @password.concat(random_generator(SPECIAL)) if args[:special]
-        return @password.shuffle.join[0...args[:length]]
+        password_chars = []
+
+        password_chars.concat(UPPER_CHARS) if args[:uppercase]
+        password_chars.concat(LOWER_CHARS) if args[:lowercase]
+        password_chars.concat(NUMBER) if args[:number]
+        password_chars.concat(SPECIAL) if args[:special]
+
+        temp = (0...args[:length]).map{ |i| password_chars[i] || password_chars[rand(password_chars.size)] }
+
+        return args[:length] > password_chars.size ? random_generator(temp) : random_generator(password_chars)[0...args[:length]]
     end
 
     def random_generator(chars)
-        chars.shuffle
+        chars.shuffle.join
     end
 
     
