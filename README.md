@@ -59,7 +59,7 @@ The design tries to follow the rules for low-cost maintainable code, like: DRY c
 > The name of the generator method is changed to comply to Ruby style, as `generate_password`, instead of Java style notation.
 
 ### Issues encountered during implemention
-* It is hard to use correctly the current `password_generator` method having so many arguments. 
+* It is hard to use correctly the current `generate_password` method having so many arguments. 
 > The method signature is error-prone, making easy to set the arguments in the wrong order, or with wrong values.
 * The generated password is not always containing characters from all the selected sets.
 > The internally generated 'full-size' password contains all characters selected. The final password, which is extracted to certain size using `.sample(args[:length])`, can miss characters of any type.
