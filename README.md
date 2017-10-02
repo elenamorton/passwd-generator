@@ -35,6 +35,7 @@ We have to load the file first, and then create an object as follows `gen = Clas
 * Allow the generated password to contain lowercase chars, if chosen;
 * Allow the generated password to contain any numbers 0 to 9 chars, if chosen;
 * Allow the generated password to contain the `!$%&*@^` special chars, if chosen;
+* Use password generation signature in Java syntax as: `String generatePassword(int length, boolean uppercase, boolean lowercase, boolean number, boolean special)`
 
 ### User Stories extracted from the specification
 
