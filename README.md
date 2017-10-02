@@ -54,7 +54,9 @@ I'd like to be able to set the length and character set types of the password
 
 ### Design Decisions
 
-### Issues encounter during implemention
+### Issues encountered during implemention
+
+![Test failures](./docs/password_failures.png)
 
 ### Suggested Improvements
 
