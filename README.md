@@ -57,8 +57,15 @@ The current design contain a `Generator` module, with a public `generator_passwo
 The design tries to follow the rules for low-cost maintainable code, like: DRY code, methods with single responsibility, loose dependency by injecting arguments as a hash object in `get_password(args)`, which also encapsulates the password implementation.
 
 ### Issues encountered during implemention
+* It is hard to use correctly the current `password_generator` method having so many arguments. 
+> The method signature is error-prone, making easy to set the arguments in the wrong order, or with wrong values.
+* The generated password is not always containing characters from all the selected sets.
+> The internally generated 'full-size' password contains all characters selected. The final password, which is extracted to certain size using `.sample(args[:length])`, can miss characters of any type.
+> This is noticable while running the test suite and getting errors like below.
 
 ![Test failures](./docs/password_failures.png)
+
+> The closer the final password size to the internal 'full-size' password, the lower the possiblity to getting such errors.
 
 ### Suggested Improvements
 
