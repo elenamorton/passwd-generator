@@ -30,7 +30,7 @@ module Generator
         build_chars_array(password_chars, NUMBER, args[:number])
         build_chars_array(password_chars, SPECIAL, args[:special])
 
-        password_chars_padded = string_padding(args[:length], password_chars)
+        password_chars_padded = array_padding(args[:length], password_chars)
 
         return args[:length] > password_chars.size ? random_generator(password_chars_padded) : random_generator(password_chars)[0...args[:length]]
     end
@@ -39,8 +39,8 @@ module Generator
         destination_arr.concat(source_arr) if flag
     end
     
-    def string_padding(len, str)
-        (0...len).map{ |i| str[i] || str[rand(str.size)] }
+    def array_padding(len, arr)
+        (0...len).map{ |i| arr[i] || arr[rand(arr.size)] }
     end
 
     def random_generator(chars)
