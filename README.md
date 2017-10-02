@@ -65,7 +65,7 @@ The design tries to follow the rules for low-cost maintainable code, like: DRY c
 
 ![Test failures](./docs/password_failures.png)
 
-> The closer the final password size to the internal 'full-size' password, the lower the possiblity to getting such errors.
+> The closer the final password size to the internal 'full-size' password, the lower the possiblity of getting such errors.
 
 ### Suggested Improvements
 
