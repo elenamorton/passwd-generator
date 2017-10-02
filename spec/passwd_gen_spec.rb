@@ -119,6 +119,15 @@ RSpec.describe Generator do
             expect(numbers).not_to match( a_string_matching(/[a-z]+/) )
             expect(numbers).not_to match( a_string_matching(re_special_chars) )
         end
+        
+        it 'generated password contains at least one of the choosen character sets' do
+            passwd_aA0 = generator.generate_password(12, uppercase, lowercase, number, no_special)
+            expect(passwd_aA0.length).to eq 12
+            expect(passwd_aA0).to match( a_string_matching(/[0-9]+/) )
+            expect(passwd_aA0).to match( a_string_matching(/[A-Z]+/) )
+            expect(passwd_aA0).to match( a_string_matching(/[a-z]+/) )
+            expect(passwd_aA0).not_to match( a_string_matching(re_special_chars) )
+        end
     
     end
     
