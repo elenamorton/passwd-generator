@@ -17,22 +17,26 @@ module Generator
 
     private
     
-    UPPER_CHARS = ('A'..'Z').to_a
-    LOWER_CHARS = ('a'..'z').to_a
+    UPPERCASE = ('A'..'Z').to_a
+    LOWERCASE = ('a'..'z').to_a
     NUMBER = ('0'..'9').to_a
     SPECIAL = %w[! $ % & * @ ^]
     
     def get_password(args)
         password_chars = []
 
-        password_chars.concat(UPPER_CHARS) if args[:uppercase]
-        password_chars.concat(LOWER_CHARS) if args[:lowercase]
-        password_chars.concat(NUMBER) if args[:number]
-        password_chars.concat(SPECIAL) if args[:special]
+        build_chars_array(password_chars, UPPERCASE, args[:uppercase])
+        build_chars_array(password_chars, LOWERCASE, args[:lowercase])
+        build_chars_array(password_chars, NUMBER, args[:number])
+        build_chars_array(password_chars, SPECIAL, args[:special])
 
         password_chars_padded = string_padding(args[:length], password_chars)
 
         return args[:length] > password_chars.size ? random_generator(password_chars_padded) : random_generator(password_chars)[0...args[:length]]
+    end
+    
+    def build_chars_array(destination_arr, source_arr, flag)
+        destination_arr.concat(source_arr) if flag
     end
     
     def string_padding(len, str)
