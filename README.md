@@ -70,4 +70,13 @@ The design tries to follow the rules for low-cost maintainable code, like: DRY c
 > The closer the final password size to the internal 'full-size' password, the lower the possiblity of getting such errors.
 
 ### Suggested Improvements
+At present, the following three suggestions are provided for improving the password content with all selected character sets.
 
+* Use of a random generator inside the Array `shuffle` method:
+
+```ruby
+arr.shuffle(random: Random.new(56012))
+```
+> This may require many tries to determine the acceptable random seed, and also can make the password less secure with same sequence generated.
+
+* Use of a ranking system based on the number of characters in each selected set relative to the password required length.
