@@ -44,7 +44,7 @@ module Generator
     end
 
     def random_generator(chars)
-        chars.shuffle.join
+        chars.shuffle!.join
     end
 
     
