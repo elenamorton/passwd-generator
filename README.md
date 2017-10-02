@@ -88,4 +88,8 @@ The total characters length is `26 + 26 + 10 + 7 = 69`. The ratio we get is abou
 
 > This solution involves extra calculations for each character sets length in final password. 
 
-* Use of a 'smart' reducer
+* Use of a `'smart' reducer`, that runs onto the internal `full-size` password and removes nearby characters belonging to the same character set.
+> E.g, for a `length = 10` password, with `lowercase` and `number` characters, we get a `36` full-size internal password as `76sy3pcmtaqdob52v4xlkru08z9fwi1negjh`.
+The `reducer` may have initially a window set to `3`, and produce an interim result as `76sy3pctado52v4xlru08z9fw1nejh` having size `30`. 
+On the next iteration, the window can be reduced to `2`, shorening the string more. 
+Several runs would be required to downsize to the `length = 10` size.
