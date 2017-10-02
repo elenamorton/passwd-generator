@@ -80,3 +80,9 @@ arr.shuffle(random: Random.new(56012))
 > This may require many tries to determine the acceptable random seed, and also can make the password less secure with same sequence generated.
 
 * Use of a ranking system based on the number of characters in each selected set relative to the password required length.
+> E.g. for a password of `length = 10` characters, with `uppercase`, `lowercase`, `number`, and `special`, we should get `4 - uppercase` characters, `4 - lowercase` characters, `1 - number` character, and `1 - special` character.
+The total characters length is `26 + 26 + 10 + 7 = 69`. The ratio we get is about `1:7`, resulting in: `26 / 7 =~ 4 uppercase`,  `26 / 7 =~ 4 lowercase`, `10 / 7 =~ 1 number`, and `7 / 7 = 1 special`.
+
+> This solution involves extra calculations for each character sets length in final password. 
+
+* Use of a 'smart' reducer
