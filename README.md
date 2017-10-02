@@ -41,7 +41,7 @@ We have to load the file first, and then create an object as follows `gen = Clas
 ```
 As a user
 So as I can get a secure password
-I'd like to be able to set the length and character contents of the password
+I'd like to be able to set the length and character set types of the password
 ```
 
 ## 3. Application design
