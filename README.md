@@ -14,13 +14,11 @@ $ rspec
 ```
 * test coverage
 
-![Test coverage](./docs/coverage.png)
+![Test coverage](./docs/password_coverage.png)
 
-* run the CLI application.
-> We have to make sure the script is marked as executable. If it is not, please run the command `chmod +x app.rb`
-```sh
-$ ./app.rb
-```
+* load the module into the `irb`
+> We have to load the file first, and then create an object as follows `gen = Class.new { extend Generator }`, in order to access the `generator_password` method.
+![Test irb](./docs/password_irb.png)
 
 #### Used Technologies
 * ruby 2.3.4p301
