@@ -48,6 +48,8 @@ I'd like to be able to set the length and character set types of the password
 ## 3. Application design
 
 ### Asumptions
+* The caller is specifying all five arguments in the right order when calling the password generator method.
+* No invalid input parameters for the character set types.
 
 ### Design Decisions
 
