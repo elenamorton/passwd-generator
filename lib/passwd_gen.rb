@@ -30,9 +30,9 @@ module Generator
         password_chars.concat(NUMBER) if args[:number]
         password_chars.concat(SPECIAL) if args[:special]
 
-        password_padded = string_padding(args[:length], password_chars)
+        password_chars_padded = string_padding(args[:length], password_chars)
 
-        return args[:length] > password_chars.size ? random_generator(password_padded) : random_generator(password_chars)[0...args[:length]]
+        return args[:length] > password_chars.size ? random_generator(password_chars_padded) : random_generator(password_chars)[0...args[:length]]
     end
     
     def string_padding(len, str)
