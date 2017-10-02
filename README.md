@@ -53,8 +53,10 @@ I'd like to be able to set the length and character set types of the password
 * No invalid input parameters for the character set types.
 
 ### Design Decisions
-The current design contain a `Generator` module, with a public `generator_password` method and several helper private methods.
+The current design contain a `Generator` module, with a public `generate_password` method and several helper private methods.
+
 The design tries to follow the rules for low-cost maintainable code, like: DRY code, methods with single responsibility, loose dependency by injecting arguments as a hash object in `get_password(args)`, which also encapsulates the password implementation.
+> The name of the generator method is changed to comply to Ruby style, as `generate_password`, instead of Java style notation.
 
 ### Issues encountered during implemention
 * It is hard to use correctly the current `password_generator` method having so many arguments. 
