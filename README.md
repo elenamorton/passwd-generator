@@ -17,7 +17,9 @@ $ rspec
 ![Test coverage](./docs/password_coverage.png)
 
 * load the module into the `irb`
-> We have to load the file first, and then create an object as follows `gen = Class.new { extend Generator }`, in order to access the `generator_password` method.
+
+We have to load the file first, and then create an object as follows `gen = Class.new { extend Generator }`. Access the `generator_password` method through the `gen` object as follows:
+
 ![Test irb](./docs/password_irb.png)
 
 #### Used Technologies
