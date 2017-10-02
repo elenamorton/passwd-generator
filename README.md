@@ -61,6 +61,9 @@ The design tries to follow the rules for low-cost maintainable code, like: DRY c
 ### Issues encountered during implemention
 * It is hard to use correctly the current `generate_password` method having so many arguments. 
 > The method signature is error-prone, making easy to set the arguments in the wrong order, or with wrong values.
+* There are no duplicated characters in the generated password, unless the required `length` is larger than the selected character sets size.
+> For instance, if the `length = 80`, and we only select `uppercase` and `special`, we would have a gap not being able to fill in up to the required size, as we use `26 + 7 = 33` only characters. 
+The current implementation uses a `array_padding(len, arr)` method to populate the remaining `80 - 33` empty slots.
 * The generated password is not always containing characters from all the selected sets.
 > The internally generated 'full-size' password contains all characters selected. The final password, which is extracted to certain size using `.sample(args[:length])`, can miss characters of any type.
 > This is noticable while running the test suite and getting errors like below.
