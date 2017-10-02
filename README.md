@@ -36,6 +36,7 @@ We have to load the file first, and then create an object as follows `gen = Clas
 * Allow the generated password to contain any numbers 0 to 9 chars, if chosen;
 * Allow the generated password to contain the `!$%&*@^` special chars, if chosen;
 * Use password generator signature in Java syntax as: `String generatePassword(int length, boolean uppercase, boolean lowercase, boolean number, boolean special)`
+* No dependencies on external libraries/services that could generate a password
 
 ### User Stories extracted from the specification
 
@@ -53,7 +54,7 @@ I'd like to be able to set the length and character set types of the password
 
 ### Design Decisions
 
-### Current Limitations
+### Issues encounter during implemention
 
 ### Suggested Improvements
 
